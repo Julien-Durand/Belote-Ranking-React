@@ -1,0 +1,138 @@
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 11px 40px;
+  font-size: 0.875rem;
+  line-height: 1.35em;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  background: #344675;
+  background-image: linear-gradient(to bottom left, #344675, #263148, #344675);
+  background-size: 210% 210%;
+  background-position: 100% 0;
+  background-color: #344675;
+  transition: all 0.15s ease;
+  box-shadow: none;
+  color: #fff;
+  &:hover {
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    transform: translateY(-1px);
+    -webkit-transform: translateY(-1px);
+  }
+}
+
+.btn__def {
+  color: #fff;
+  background-color: #344675;
+  border-color: #344675;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.btn__primary {
+  background: #e14eca;
+  background-image: linear-gradient(to bottom left, #e14eca, #ba54f5, #e14eca);
+  background-size: 210% 210%;
+  background-position: 100% 0;
+  background-color: #e14eca;
+  transition: all 0.15s ease;
+  box-shadow: none;
+  color: #fff;
+}
+
+.btn__success {
+  background: #00f2c3;
+  background-image: linear-gradient(to bottom left, #00f2c3, #0098f0, #00f2c3);
+  background-size: 210% 210%;
+  background-position: 100% 0;
+  background-color: #00f2c3;
+  transition: all 0.15s ease;
+  box-shadow: none;
+  color: #fff;
+}
+
+.btn__danger {
+  background: #fd5d93;
+  background-image: linear-gradient(to bottom left, #fd5d93, #ec250d, #fd5d93);
+  background-size: 210% 210%;
+  background-position: 100% 0;
+  background-color: #fd5d93;
+  transition: all 0.15s ease;
+  box-shadow: none;
+  color: #fff;
+}
+.btn__info {
+  background: #1d8cf8;
+  background-image: linear-gradient(to bottom left, #1d8cf8, #3358f4, #1d8cf8);
+  background-size: 210% 210%;
+  background-position: 100% 0;
+  background-color: #1d8cf8;
+  transition: all 0.15s ease;
+  box-shadow: none;
+  color: #fff;
+}
+
+.btn__small {
+  font-size: 0.875rem;
+  border-radius: 0.2857rem;
+  padding: 5px 15px;
+}
+
+.btn__large {
+  font-size: 0.875rem;
+  border-radius: 0.4285rem;
+  padding: 15px 48px;
+}
+
+.btn__round {
+  border-width: 1px;
+  border-radius: 30px;
+}
+
+.btn__simple {
+  padding: 10px 22px;
+  border-width: 1px;
+  border-radius: 30px;
+  background: transparent;
+  border-color: hsla(0, 0%, 100%, 0.5);
+  color: #fff;
+}
+.btn__simple__def {
+  padding: 10px 22px;
+  border-width: 1px;
+  background: transparent;
+  border-color: hsla(0, 0%, 100%, 0.5);
+  color: #fff;
+}
+
+.btn__simple.btn__primary,
+.btn__simple__def.btn__primary {
+  color: #e14eca;
+  border-color: #e14eca;
+}
+.btn__simple.btn__success,
+.btn__simple__def.btn__success {
+  color: #00f2c3;
+  border-color: #00f2c3;
+}
+.btn__simple.btn__danger,
+.btn__simple__def.btn__danger {
+  color: #fd5d93;
+  border-color: #fd5d93;
+}
+.btn__simple.btn__info,
+.btn__simple__def.btn__info {
+  color: #1d8cf8;
+  border-color: #1d8cf8;
+}
