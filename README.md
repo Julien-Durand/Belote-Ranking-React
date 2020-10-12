@@ -5,7 +5,8 @@ New project to learn ReactJs. It's a webapp with local storage for the v1
 
 # Steps
 
-1 - Home
+1 - Home --> Done
+add account page (sign in and sign up)
 
 2 - Add Players (page/form)
 
@@ -13,11 +14,3 @@ New project to learn ReactJs. It's a webapp with local storage for the v1
 
 4 - Show the scores
 
-# V2
-
-Use firebase
-1 - Create account
-
-2 - Show a profil for the players in the group
-
-3 - Player Stats
