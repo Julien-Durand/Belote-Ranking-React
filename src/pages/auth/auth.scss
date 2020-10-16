@@ -1,0 +1,109 @@
+.section-auth {
+  .row {
+    justify-content: center;
+    margin-top: 100px;
+    form {
+      position: relative;
+      border-radius: 0.25rem;
+      background: #1f2251;
+      box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
+      padding: 50px 100px;
+      max-width: 780px;
+      .title-header {
+        background-color: initial;
+        color: #fff;
+        border: 0;
+        h1 {
+          top: 146px;
+          position: absolute;
+          left: 136px;
+          color: hsla(0, 0%, 100%, 0.8);
+          text-align: left !important;
+          margin-top: 0;
+          font-size: 2rem;
+        }
+        h5 {
+          position: relative;
+          z-index: 1;
+          font-size: 7em;
+          margin-left: -4px;
+          font-weight: 900;
+          color: hsla(0, 0%, 100%, 0.2) !important;
+        }
+      }
+      input {
+        position: relative;
+        flex-wrap: wrap;
+        align-items: stretch;
+        padding: 10px 15px;
+        display: block;
+        width: 100%;
+        height: calc(2.25rem + 2px);
+        line-height: 1.42857;
+        color: hsla(0, 0%, 100%, 0.8);
+        border: 1px solid #cad1d7;
+        box-shadow: none;
+        border-color: #2b3553;
+        border-radius: 0.4285rem;
+        transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
+        background-color: transparent;
+        background-clip: padding-box;
+        margin-bottom: 20px;
+      }
+      button {
+        width: 100%;
+      }
+      .textSignup {
+        color: hsla(0, 0%, 100%, 0.8);
+        margin-top: 30px;
+        font-size: 0.85rem;
+        a {
+          margin-left: 10px;
+        }
+      }
+      .text-intro {
+          color: hsla(0, 0%, 100%, 0.8);
+          margin: 40px 0 15px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .section-auth {
+    .row {
+      form {
+        .title-header {
+          h1 {
+            font-size: 1.5em;
+            top:118px;
+            left: 128px;
+          }
+          h5 {
+            font-size: 4.8em;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 576px) {
+  .section-auth {
+    .row {
+      form {
+        .title-header {
+          h1 {
+            top:90px;
+            left: 115px;
+            font-size: 1.2em;
+          }
+          h5 {
+            font-size: 2.4em;
+          }
+        }
+      }
+    }
+  }
+}

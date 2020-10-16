@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Button.scss";
 
 const STYLES = ["btn__default", "btn__round", "btn__simple", "btn__simple__def"];

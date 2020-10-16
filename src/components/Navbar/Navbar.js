@@ -13,7 +13,7 @@ function Navbar() {
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            Belote Ranking <i className="fas fa-trophy"></i>
+            BLR <i className="fas fa-trophy"></i>
           </Link>
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
@@ -27,7 +27,7 @@ function Navbar() {
             <li className="nav-item">
               <Link
                 to="/"
-                className="nav-links"
+                className="nav-links btn btn__primary"
                 onClick={closeMobileMenu}
               >
                 Commencer une partie
@@ -49,6 +49,15 @@ function Navbar() {
                 onClick={closeMobileMenu}
               >
                 Joueurs
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/signin"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                Connexion
               </Link>
             </li>
           </ul>

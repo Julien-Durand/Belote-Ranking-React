@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import Footer from "../components/Footer/Footer";
+import HeroSection from "../components/HeroSection/HeroSection";
 
 function Home() {
-    return (
-        <>
-            
-        </>
-    )
+  return (
+    <>
+      <HeroSection />
+      <Footer />
+    </>
+  );
 }
 
-export default Home
+export default Home;

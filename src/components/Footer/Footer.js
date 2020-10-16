@@ -38,7 +38,7 @@ function Footer() {
           </div>
           <div className="col-md-4">
               <h3 className="title">Me suivre :</h3>
-              <a href="https://github.com/Julien-Durand" target="_bank" className="git-icon"><i class="fab fa-github"></i></a>
+              <a href="https://github.com/Julien-Durand" target="_bank" className="git-icon"><i className="fab fa-github"></i></a>
           </div>
         </div>
       </div>

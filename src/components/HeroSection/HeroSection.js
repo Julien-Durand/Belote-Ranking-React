@@ -22,7 +22,7 @@ function HeroSection() {
         <div className="container">
           <div className="container-center brand">
             <h1>
-              BLR <i class="fas fa-trophy"></i>
+              BLR <i className="fas fa-trophy"></i>
             </h1>
             <h3>
               Belote Ranking est une application pour compter les points et
