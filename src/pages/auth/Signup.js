@@ -1,29 +1,54 @@
-import React, { useContext } from "react";
-import { firebaseAuth } from "../../provider/AuthProvider";
-import { withRouter } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
+import React, { useState } from "react";
+import { useFirebaseApp } from "reactfire";
+import { useHistory } from "react-router";
+import "firebase/auth";
 import "./auth.scss";
 
-const Signup = (props) => {
-  const { handleSignup, inputs, setInputs, errors } = useContext(firebaseAuth);
+const Signup = () => {
+  const history = useHistory();
 
+  //import firebase
+  const firebase = useFirebaseApp();
+
+  // User State
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    error: "",
+  });
+
+  // onChange function
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+      error: "",
+    });
+  };
+
+  // Submit (Create account)
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("handleSubmit");
-    //wait to signup
-    await handleSignup();
-    //push home
-    props.history.push("/");
-  };
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log(inputs);
-    setInputs((prev) => ({ ...prev, [name]: value }));
+    await firebase
+      .auth()
+      .createUserWithEmailAndPassword(user.email, user.password)
+      .then((result) => {
+        history.replace("/");
+        //Sign out user
+        // firebase.auth().signOut();
+      })
+      .catch((error) => {
+        console.log(error);
+        setUser({
+          ...user,
+          error: error.message,
+        });
+      });
   };
 
   return (
     <>
-     <div className="wrapper">
+      <div className="wrapper">
         <section className="section section-auth">
           <div className="container">
             <div className="row">
@@ -39,29 +64,25 @@ const Signup = (props) => {
                   onChange={handleChange}
                   name="email"
                   placeholder="email"
-                  value={inputs.email}
                 />
                 <input
                   onChange={handleChange}
                   name="password"
                   placeholder="Mot de passe (6 caractère min)"
                   type="password"
-                  value={inputs.password}
                 />
-                <button className="btn btn__success btn__simple">
+                <button className="btn btn__success btn__simple" type="submit">
                   Créer son compte
                 </button>
-                {errors.length > 0
-                  ? errors.map((error) => <p style={{ color: "red" }}>{error}</p>)
-                  : null}
+                {user.error && <p style={{ color: "red" }}>{user.error}</p>}
               </form>
+              
             </div>
           </div>
         </section>
-        </div>
-      <Footer />
+      </div>
     </>
   );
 };
 
-export default withRouter(Signup);
+export default Signup;

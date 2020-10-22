@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
-import Footer from "../components/Footer/Footer";
-import {firebaseAuth} from "../provider/AuthProvider";
+import React from "react";
+import { useUser } from "reactfire";
 import "../App.scss";
+import Signin from "./auth/Signin";
 
 function Joueurs() {
-    const {handleSignout,} = useContext(firebaseAuth);
+  const user = useUser();
+
   return (
     <>
-      <div>
-        Home, login successful!!!!!!
-        <button onClick={handleSignout}>sign out </button>
-      </div>
-      <Footer />
+     {user && (
+        <h1>Helllo Joueur</h1>
+     )} 
+     { !user && <Signin />}    
     </>
   );
 }

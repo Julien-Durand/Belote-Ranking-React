@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import React, { Suspense } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import { FirebaseAppProvider, AuthCheck } from "reactfire";
+import firebaseConfig from "./firebase/firebaseIndex";
 //Style
 import "./App.scss";
-
-//Nav
-import Navbar from "./components/Navbar/Navbar";
 
 // Pages
 import Home from "./pages/Home";
@@ -14,40 +16,48 @@ import Signup from "./pages/auth/Signup";
 import Signin from "./pages/auth/Signin";
 import Belote from "./pages/Belote";
 import Score from "./pages/Score";
-import { firebaseAuth } from "./provider/AuthProvider";
 
-function App() {
-  const { token } = useContext(firebaseAuth);
-  console.log(token);
+//comp
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
+const PublicRoutes = () => {
   return (
     <>
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route
-            exact
-            path="/Joueurs"
-            render={(rProps) => (token === null ? <Signin /> : <Joueurs />)}
-          />
-          <Route
-            exact
-            path="/Belote"
-            render={(rProps) => (token === null ? <Signin /> : <Belote />)}
-          />
-          <Route
-            exact
-            path="/Score"
-            render={(rProps) => (token === null ? <Signin /> : <Score />)}
-          />
-          <Route exact path="/signin" component={Signin} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/Joueurs" component={Joueurs} />
-        </Switch>
-      </Router>
+      <Route exact path="/signin" component={Signin} />
+      <Route exact path="/signup" component={Signup} />
     </>
   );
-}
+};
+
+const PrivateRoutes = () => {
+  return (
+    <>
+      <Route exact path="/Joueurs" component={Joueurs} />
+      <Route exact path="/Belote" component={Belote} />
+      <Route exact path="/Score" component={Score} />
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+      <Router>
+        <Switch>
+          <Suspense fallback={<h3>Loading...</h3>}>
+            <Navbar />
+            <Route exact path="/" component={Home} />
+            <AuthCheck fallback={<PublicRoutes />}>
+              {/* <PublicRoutes /> */}
+              <PrivateRoutes />
+            </AuthCheck>
+            <Footer />
+          </Suspense>
+        </Switch>
+      </Router>
+    </FirebaseAppProvider>
+  );
+};
 
 export default App;

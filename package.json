@@ -7,12 +7,13 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "dotenv": "^8.2.0",
-    "firebase": "^7.23.0",
+    "firebase": "^7.24.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "reactfire": "^2.0.0-alpha.3"
   },
   "scripts": {
     "start": "react-scripts start",
