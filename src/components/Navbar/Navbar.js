@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import './Navbar.scss';
+import "./Navbar.scss";
+import { useUser } from "reactfire";
+import Logout from "../../pages/auth/Logout";
 
 function Navbar() {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+
+  const user = useUser();
 
   return (
     <>
@@ -34,32 +38,35 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 Scores
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 Joueurs
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                to="/signin"
-                className="nav-links"
-                onClick={closeMobileMenu}
-              >
-                Connexion
-              </Link>
-            </li>
+            {user && (
+              <>
+                <li className="nav-item">
+                  <Logout />
+                </li>
+              </>
+            )}
+            {!user && (
+              <>
+                <li className="nav-item">
+                  <Link
+                    to="/signin"
+                    className="nav-links"
+                    onClick={closeMobileMenu}
+                  >
+                    Connexion
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </nav>

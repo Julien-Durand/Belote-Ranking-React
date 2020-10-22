@@ -1,20 +1,50 @@
-import React, { useContext } from "react";
-import Footer from "../../components/Footer/Footer";
-import { firebaseAuth } from "../../provider/AuthProvider";
+import React, { useState } from "react";
+import { useFirebaseApp } from "reactfire";
+import { useHistory } from "react-router";
+import "firebase/auth";
 import "./auth.scss";
 
 const Signin = () => {
-  const { handleSignin, inputs, setInputs, errors } = useContext(firebaseAuth);
+  
+  
+ 
+  // User State
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    error: "",
+  });
 
+  // onChange function
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+      error: "",
+    });
+  };
+
+  // Import firebase
+  const firebase = useFirebaseApp();
+  const history = useHistory();
+  
+  // Submit function (Log in user)
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handleSubmit");
-    handleSignin();
-  };
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    console.log(inputs);
-    setInputs((prev) => ({ ...prev, [name]: value }));
+    // Log in code here.
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(user.email, user.password)
+      .then((result) => {
+        history.replace("/");
+      })
+      .catch((error) => {
+        // Update the error
+        setUser({
+          ...user,
+          error: error.message,
+        });
+      });
   };
 
   return (
@@ -32,26 +62,20 @@ const Signin = () => {
                   onChange={handleChange}
                   name="email"
                   placeholder="Email"
-                  value={inputs.email}
                 />
                 <input
                   onChange={handleChange}
                   name="password"
                   type="password"
                   placeholder="Mot de passe"
-                  value={inputs.password}
                 />
-                <button className="btn btn__success btn__simple">
+                <button className="btn btn__success btn__simple" type="submit">
                   Connexion
                 </button>
-                {errors.length > 0
-                  ? errors.map((error) => (
-                      <p style={{ color: "red" }}>{error}</p>
-                    ))
-                  : null}
-
+                {user.error && <p style={{ color: "red" }}>{user.error}</p>}
+              
                 <div className="textSignup">
-                  Pas de compte ?  
+                  Pas de encore de compte ?
                   <a
                     href="/signup"
                     className="btn btn__info btn__simple btn__small"
@@ -60,11 +84,11 @@ const Signin = () => {
                   </a>
                 </div>
               </form>
+              
             </div>
           </div>
         </section>
       </div>
-      <Footer />
     </>
   );
 };

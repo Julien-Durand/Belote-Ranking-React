@@ -3,9 +3,11 @@ import { Button } from "../Button/Button";
 import Card from "../Cards/Card";
 import "../../App.scss";
 import "./HeroSection.scss";
+import { useUser } from "reactfire";
 
 function HeroSection() {
   const posRef = useRef();
+  const user = useUser();
 
   const handleDownClick = () =>
     posRef.current.scrollIntoView({ behavior: "smooth" });
@@ -52,7 +54,7 @@ function HeroSection() {
                 desc="Ajoute des joueurs à ta liste pour faire équipe avec eux ou jouer contre !"
                 btnStyle="btn__simple__def"
                 btnColor="btn__primary"
-                link="Joueurs"
+                link={ user ? "Joueurs" : "signin"}
                 textBtn="Ajouter un joueur"
               />
             </div>
@@ -65,7 +67,7 @@ function HeroSection() {
                 desc="C'est partie pour une petite belote entre amis. Aller pas le temps de niaiser !"
                 btnStyle="btn__simple__def"
                 btnColor="btn__success"
-                link="Belote"
+                link={ user ? "Belote" : "signin"}
                 textBtn="Let's go"
               />
             </div>
@@ -78,7 +80,7 @@ function HeroSection() {
                 desc="Retrouve l'historique des parties de belote, victoire, defaite, les stats sont là"
                 btnStyle="btn__simple__def"
                 btnColor="btn__info"
-                link="Score"
+                link={ user ? "Score" : 'signin'}
                 textBtn="Voir l'historique"
               />
             </div>
