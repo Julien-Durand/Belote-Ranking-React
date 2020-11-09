@@ -121,6 +121,9 @@
     h1 {
       line-height: 1.05em;
     }
+    h2 {
+      font-size: 1.6rem;
+    }
     h3 {
       line-height: 1.4em;
       font-size: 1.4rem;
@@ -182,6 +185,10 @@
   .col-md-4 {
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
+  }
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
   }
   .col-md-12 {
     flex: 0 0 100%;

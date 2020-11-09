@@ -30,7 +30,7 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link
-                to="/"
+                to="/Belote"
                 className="nav-links btn btn__primary"
                 onClick={closeMobileMenu}
               >
@@ -38,13 +38,13 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Scores
+              <Link to="/Joueurs" className="nav-links" onClick={closeMobileMenu}>
+                Joueurs
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-                Joueurs
+              <Link to="/Score" className="nav-links" onClick={closeMobileMenu}>
+                Scores
               </Link>
             </li>
             {user && (

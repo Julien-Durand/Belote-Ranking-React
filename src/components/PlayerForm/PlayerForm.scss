@@ -1,0 +1,55 @@
+.section-playerForm {
+  .row {
+      align-items: center;
+      justify-content: space-between;
+    form {
+      position: relative;
+      h4 {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+      .profil-pic {
+        justify-content: center;
+        margin: 0;
+        width: 100%;
+        img {
+          box-shadow: 0 1px 20px 0 rgba(0,0,0,.4);
+          border-radius: 50%;
+          margin: 20px 0;
+        }
+        .select-pic {
+          padding: 8px 15px;
+          color: rgba(255, 255, 255, 0.9);
+          background-color: #171941;
+        }
+      }
+      input, select {
+        position: relative;
+        flex-wrap: wrap;
+        align-items: stretch;
+        padding: 10px 15px;
+        display: block;
+        width: 100%;
+        height: calc(2.25rem + 2px);
+        line-height: 1.42857;
+        color: hsla(0, 0%, 100%, 0.8);
+        border: 1px solid #cad1d7;
+        box-shadow: none;
+        border-color: #2b3553;
+        border-radius: 0.4285rem;
+        transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+        background-color 0.3s ease-in-out;
+        background-color: transparent;
+        background-clip: padding-box;
+        margin-bottom: 20px;
+      }
+    }
+    .block-image {
+      img {
+        position: relative;
+        width: 100%;
+      }
+    }
+  }
+}

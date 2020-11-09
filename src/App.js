@@ -1,9 +1,5 @@
 import React, { Suspense } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { FirebaseAppProvider, AuthCheck } from "reactfire";
 import firebaseConfig from "./firebase/firebaseIndex";
 //Style
@@ -45,7 +41,17 @@ const App = () => {
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <Router>
         <Switch>
-          <Suspense fallback={<h3>Loading...</h3>}>
+          <Suspense
+            fallback={
+              <div className="wrapper">
+                <div className="container">
+                  <div className="row">
+                    <h3>Loading...</h3>
+                  </div>
+                </div>
+              </div>
+            }
+          >
             <Navbar />
             <Route exact path="/" component={Home} />
             <AuthCheck fallback={<PublicRoutes />}>
