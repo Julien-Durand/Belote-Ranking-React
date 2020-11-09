@@ -1,17 +1,14 @@
 import React from "react";
-import { useUser } from "reactfire";
 import "../App.scss";
-import Signin from "./auth/Signin";
+import ListPlayer from "../components/ListPlayer/ListPlayer";
+import PlayerForm from "../components/PlayerForm/PlayerForm";
 
 function Joueurs() {
-  const user = useUser();
 
   return (
     <>
-     {user && (
-        <h1>Helllo Joueur</h1>
-     )} 
-     { !user && <Signin />}    
+      <PlayerForm />
+      <ListPlayer />
     </>
   );
 }
