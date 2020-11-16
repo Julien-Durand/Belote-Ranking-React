@@ -1,16 +1,25 @@
 # Belote-Ranking-ReactJs
 
 New project to learn ReactJs. It's a webapp with local storage for the v1
+Projet en React afin de pratiquer et apprendre.
+C'est une application qui permet de compter les points d'une partie de belote.
+Après avoir créé un compte commun pour son groupe d'amis, il est possible d'ajouter dans une liste de joueurs les différents amis.
+Ensuite il ne reste plus qu'à lancer une partie.
+Il est possible de retrouver tous les scores de chaque partie terminée.
+
+Pour la deuxième version, il sera possible de voir les stats pour chaque joueurs.
 
 
 # Steps
 
-1 - Home --> Done
-add account page (sign in and sign up)
+1 - HomePage --> Done
+2 - Création de compte et connexion --> Done 
 
-2 - Add Players (page/form)
+2 - Page Liste des joueurs (ajouter un joueur - voir la liste) --> Done
 
-3 - Start game, create team, add the scores and sav the game in a tab
+3 - Commencer une partie de belote: 
+    -- Créer les équipes --> Done
+    -- Manche/Scores --> **To do**
 
-4 - Show the scores
+4 - Afficher les scores
 
