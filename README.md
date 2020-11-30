@@ -30,4 +30,5 @@ Pour la deuxième version, il sera possible de voir les stats pour chaque joueur
 
 - Ajouter la vision des stats en partie
 - Avoir des stats pour chaque joueurs
+- Ajouter une recherche et filtrage dans la page score
 
