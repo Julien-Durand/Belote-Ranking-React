@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useFirebaseApp, useUser } from "reactfire";
 import "./PlayerForm.scss";
-import * as firebase from "firebase";
 
 function PlayerForm() {
   const user = useUser();

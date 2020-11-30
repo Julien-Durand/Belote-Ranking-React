@@ -1,0 +1,180 @@
+.tab {
+  ul {
+    display: block;
+    display: flex;
+    list-style: none;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100%;
+    li {
+      cursor: pointer;
+      color: #fff;
+      background-color: #1d8cf8;
+      border-radius: 40px;
+      min-width: 40px;
+      min-height: 40px;
+      text-align: center;
+      transition: all 0.15s ease;
+      line-height: 40px;
+    }
+  }
+  .react-tabs__tab--selected {
+    background-color: #e14eca;
+  }
+  button.done {
+    background-color: #00f2c3;
+  }
+  .line {
+    position: relative;
+    height: 2px;
+    width: 100%;
+    background-color: #1d8cf8;
+    z-index: -2;
+    top: -20px;
+  }
+}
+.manche {
+  margin-top: 50px;
+  display: flex;
+  color: #fff;
+  border: 2px solid #344675;
+  border-radius: 0.8rem;
+  padding: 25px;
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.3);
+  .react-tabs__tab-panel {
+    width: 100%;
+    .header-manche {
+      i {
+        display: none;
+      }
+    }
+    .form-manche {
+      h4 {
+        align-self: center;
+      }
+      .col-md-6 {
+        justify-content: center;
+      }
+      .bloc-team {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        .wrappe-score {
+          margin-left: 50px;
+          input,
+          input:-internal-autofill-selected {
+            position: relative;
+            flex-wrap: wrap;
+            align-items: stretch;
+            padding: 10px 15px;
+            display: block;
+            width: 100%;
+            height: calc(2.25rem + 2px);
+            line-height: 1.42857;
+            color: hsla(0, 0%, 100%, 0.8);
+            border: 1px solid #cad1d7;
+            box-shadow: none;
+            border-color: #2b3553;
+            border-radius: 0.4285rem;
+            transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+              background-color 0.3s ease-in-out;
+            background-color: transparent !important;
+            background-clip: padding-box;
+            margin-bottom: 20px;
+          }
+        }
+        .player {
+          cursor: pointer;
+          img {
+            box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.4);
+            border-radius: 50%;
+            margin: 0 10px;
+            border: 1px solid transparent;
+            -webkit-filter: grayscale(95%);
+            filter: grayscale(95%);
+            -webkit-transition: 0.3s ease-in-out;
+            transition: 0.3s ease-in-out;
+          }
+        }
+        .player.active {
+          img {
+            border: 1px solid #00f2c3;
+            -webkit-filter: grayscale(0);
+            filter: grayscale(0);
+          }
+          h5 {
+            color: #00f2c3;
+          }
+        }
+      }
+      button {
+        float: right;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .manche {
+    .react-tabs__tab-panel {
+      .form-manche {
+        .bloc-team {
+          margin-top: 25px;
+          .wrappe-score {
+            margin-left: 20px;
+          }
+        }
+        button {
+          margin-top: 40px;
+          float: left;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 576px) {
+  .tab {
+    ul {
+      display: none;
+    }
+    .line {
+      display: none;
+    }
+  }
+  .manche {
+    margin: 0 15px;
+    .react-tabs__tab-panel {
+      .header-manche {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+        h3 {
+          margin-bottom: 0;
+        }
+        i {
+          display: block;
+          font-size: 1.5rem;
+          cursor: pointer;
+        }
+        .fa-chevron-circle-right {
+          margin-left: 20px;
+        }
+        .fa-chevron-circle-left {
+          margin-right: 20px;
+        }
+      }
+      .form-manche {
+        .bloc-team {
+          justify-content: space-around;
+          .wrappe-score {
+            width: auto;
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}

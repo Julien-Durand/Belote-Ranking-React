@@ -46,7 +46,7 @@ const App = () => {
               <div className="wrapper">
                 <div className="container">
                   <div className="row">
-                    <h3>Loading...</h3>
+                    <h3 className="text-center load">Chargement...</h3>
                   </div>
                 </div>
               </div>

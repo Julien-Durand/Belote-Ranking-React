@@ -74,6 +74,11 @@
   padding-right: 15px;
   padding-left: 15px;
 }
+.load {
+  width: 100%;
+  margin-top: 40%;
+  color: #fff;
+}
 .container {
   width: 100%;
   padding-right: 15px;
@@ -98,6 +103,13 @@
   max-height: 999px;
   padding: 0;
   overflow: hidden;
+}
+.section-PlayerList {
+  padding-top: 30px;
+}
+.section-game {
+  min-height: 100vh;
+  max-height: 999px;
 }
 * {
   box-sizing: border-box;
@@ -169,7 +181,10 @@
       &:focus {
         outline: none;
       }
-    }    
+    }
+    .hidden {
+      display: none;
+    }
   }
 }
 

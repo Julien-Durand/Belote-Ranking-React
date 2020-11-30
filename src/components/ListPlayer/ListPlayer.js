@@ -34,7 +34,7 @@ function ListPlayer() {
         }
       });
     return () => subscriber();
-  }, []);
+  }, [db, user, lists]);
 
   return (
     <>

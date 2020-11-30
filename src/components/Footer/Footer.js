@@ -40,7 +40,9 @@ function Footer() {
               <h3 className="title">Me suivre :</h3>
               <a href="https://github.com/Julien-Durand" target="_bank" className="git-icon"><i className="fab fa-github"></i></a>
           </div>
+          
         </div>
+        <h5 className="sourceIMG text-center">Illustration by Natasha Remarchuk from <a href="https://icons8.com/">Icons8</a></h5>
       </div>
     </footer>
   );
