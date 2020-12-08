@@ -21,7 +21,14 @@ Pour la deuxième version, il sera possible de voir les stats pour chaque joueur
 
 3 - Commencer une partie de belote: 
     -- Créer les équipes --> Done
-    -- Manche/Scores --> **To do**
+    -- Manche/Scores --> Done
+    --Afficher le score de la partie --> **To Do**
 
 4 - Afficher les scores
+
+#V2
+
+- Ajouter la vision des stats en partie
+- Avoir des stats pour chaque joueurs
+- Ajouter une recherche et filtrage dans la page score
 
