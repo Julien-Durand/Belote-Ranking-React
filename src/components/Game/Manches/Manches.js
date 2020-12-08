@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useFirebaseApp, useUser } from "reactfire";
+import { Button } from "../../Button/Button";
+import ScoreTab from "../../Scores/ScoreTab";
 import ScoreTeam from "../ScoreTeam/ScoreTeam";
-import EndScore from "./EndScore";
+import Winner from "../Winner/Winner";
 import "./Manches.scss";
 import Players from "./Players/Players";
 
@@ -15,7 +17,19 @@ function Manches(props) {
   const [end, setEnd] = useState(false);
   const [game, setGame] = useState([]);
 
-  const txtBtn = props.manche === 12 ? "Terminer la partie !" : "Enregistrer";
+  // const txtBtn = "Enregistrer";
+  const [txtBtn, setTxt] = useState();
+
+  //btn text manche
+  useLayoutEffect(() => {
+    if (props.manche === 12) {
+      setTxt("Terminer la partie !");
+    } else if (mancheAlreadySav) {
+      setTxt("Changer");
+    } else {
+      setTxt("Enregistrer");
+    }
+  }, [props.manche, mancheAlreadySav]);
 
   //manche X state
   const [score, setScore] = useState({
@@ -23,6 +37,7 @@ function Manches(props) {
     scoreTeam1: "",
     scoreTeam2: "",
     preneur: "",
+    preneurTeam: "",
     error: "",
   });
 
@@ -34,6 +49,25 @@ function Manches(props) {
     scoreBefore1: 0,
     scoreBefore2: 0,
   });
+
+  //update win team
+  const [winners, setWinners] = useState();
+
+  useEffect(() => {
+    if (
+      teamScore.team1 + score.scoreTeam1 >
+      teamScore.team2 + score.scoreTeam2
+    ) {
+      setWinners(1);
+    } else if (
+      teamScore.team1 + score.scoreTeam1 ===
+      teamScore.team2 + score.scoreTeam2
+    ) {
+      setWinners(0);
+    } else {
+      setWinners(2);
+    }
+  }, [teamScore, score]);
 
   //Update input/prise
   useEffect(() => {
@@ -100,10 +134,11 @@ function Manches(props) {
     }
   };
   //Select preneur
-  const handleClick = (player) => {
+  const handleClick = (player, teamNumber) => {
     setScore({
       ...score,
       preneur: player,
+      preneurTeam: teamNumber
     });
   };
 
@@ -185,6 +220,7 @@ function Manches(props) {
               scoreTeam2: mancheAlreadySav
                 ? score.scoreTeam2 + teamScore.team2 - scoreBefore.scoreBefore2
                 : score.scoreTeam2 + teamScore.team2,
+              winner: winners,
             });
 
           props.manche === 12 ? closeGame() : props.onClick(props.manche);
@@ -274,13 +310,41 @@ function Manches(props) {
           {score.error && <span style={{ color: "red" }}>{score.error}</span>}
           <div className="col-md-12">
             <button className="btn btn__success" type="submit">
-              {mancheAlreadySav ? "Changer" : txtBtn}
+              {txtBtn}
             </button>
           </div>
         </form>
       )}
 
-      {end && <EndScore tableau={game} />}
+      {end && (
+        <div className="endgame">
+          <h2 className="col-md-12">Winner</h2>
+          <Winner
+            score1={teamScore.team1 + score.scoreTeam1}
+            score2={teamScore.team2 + score.scoreTeam2}
+            team={props.teams}
+          />
+          <ScoreTab dataGame={game} team={props.teams} />
+          <div className="leave">
+          <Button
+            buttonStyle="btn__simple"
+            buttonColor="btn__success"
+            buttonSize="btn__regular"
+            link="Belote"
+          >
+            Nouvelle Partie
+          </Button>
+          <Button
+            buttonStyle="btn__round"
+            buttonColor="btn__danger"
+            buttonSize="btn__regular"
+            link="/"
+          >
+            Quitter
+          </Button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

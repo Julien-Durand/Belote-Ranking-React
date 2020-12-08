@@ -1,0 +1,61 @@
+.endgame {
+  display: flex;
+  flex-wrap: wrap;
+  h2 {
+    display: flex;
+    justify-content: center;
+  }
+  .winBloc {
+    .row {
+      justify-content: space-around;
+    }
+    h4 {
+      text-align: center;
+      padding-right: 15px;
+      margin-top: 70px;
+    }
+    .win_txt {
+      color: #00f2c3;
+    }
+    .lose_txt {
+      color: #fd5d93;
+    }
+  }
+  .img_win {
+    img {
+      position: relative;
+      width: 60%;
+      top: -10%;
+      right: -25%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .endgame {
+    .winBloc {
+      h4 {
+        margin-top: 35px;
+      }
+      .row {
+        margin: 0;
+      }
+    }
+    .img_win {
+      img {
+        width: 50%;
+        top: 5%;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .endgame {
+    .winBloc {
+      h4 {
+        padding-right: 0;
+      }
+    }
+  }
+}

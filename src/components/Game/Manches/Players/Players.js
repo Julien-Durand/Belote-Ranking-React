@@ -14,7 +14,7 @@ function Players(props) {
   return (
     <>
       {props.teams.slice(a,b).map((teams) => (
-        <div className={`player ${teams.id === props.prise ? "active" : ""}`} key={teams.id} onClick={() => props.click(teams)}>
+        <div className={`player ${teams.id === props.prise ? "active" : ""}`} key={teams.id} onClick={() => props.click(teams, props.teamchoice)}>
           <img src={teams.image} alt="profil" />
           <h5 className="text-center">{teams.pseudo}</h5>
         </div>

@@ -115,6 +115,19 @@
   }
 }
 
+.endgame {
+  .leave {
+    margin-top: 35px;
+    margin-bottom: 25px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    .btn:first-child {
+      margin-right: 15px;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .manche {
     .react-tabs__tab-panel {

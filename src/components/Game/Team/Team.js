@@ -79,7 +79,8 @@ function Team() {
             .set({
               isOk: true,
               scoreTeam1: 0,
-              scoreTeam2: 0
+              scoreTeam2: 0,
+              winner:""
             });
         })
         .catch((error) => {
