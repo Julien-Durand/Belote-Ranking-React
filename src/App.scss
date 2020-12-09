@@ -107,7 +107,7 @@
 .section-PlayerList {
   padding-top: 30px;
 }
-.section-game {
+.section-game, .section-score {
   min-height: 100vh;
   // max-height: 999px;
 }
@@ -184,6 +184,12 @@
     }
     .hidden {
       display: none;
+    }
+    .win_txt {
+      color: #00f2c3;
+    }
+    .lose_txt {
+      color: #fd5d93;
     }
   }
 }

@@ -154,3 +154,12 @@
   }
 }
 
+@media (max-width: 576px) {
+  .page-header {
+    .item {
+      &.clover {
+        display: none;
+      }
+    }
+  }
+}

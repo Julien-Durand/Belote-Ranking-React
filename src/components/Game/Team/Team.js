@@ -10,6 +10,9 @@ function Team() {
 
   const [submitted, setSubmitted] = useState(false);
 
+  const today = new Date();
+  const date=today.getDate() + "/"+ parseInt(today.getMonth()+1) +"/"+today.getFullYear();
+
   //Players list
   const [player, setPlayer] = useState([]);
   //team state
@@ -80,7 +83,8 @@ function Team() {
               isOk: true,
               scoreTeam1: 0,
               scoreTeam2: 0,
-              winner:""
+              winner:"",
+              date: date
             });
         })
         .catch((error) => {

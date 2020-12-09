@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState, useLayoutEffect } from "react";
 import Players from "../Game/Manches/Players/Players";
 import "./ScoreTab.scss";
 
 function ScoreTab(props) {
   const handleClick = (e) => {};
+
+  const [teams, setTeams] = useState([]);
+  //find team players
+  useLayoutEffect(() => {
+    props.dataGame.slice(13,14).map((team) => {
+      return setTeams(team.team);
+    });
+  },[props.dataGame, teams]);
 
   const showScoreTeam = (value, manche, team) => {
     if (manche === 1) {
@@ -28,8 +36,11 @@ function ScoreTab(props) {
     let total = value.slice(0, 1).map((item) => {
       return team === 1 ? item.scoreTeam1 : item.scoreTeam2;
     });
-    return total;
+    return +total;
   };
+
+  const totTeam1 = showTotal(props.dataGame, 1);
+  const totTeam2 = showTotal(props.dataGame, 2);
 
   const showPrise = (value, manche, team) => {
     if (manche === 1) {
@@ -64,20 +75,22 @@ function ScoreTab(props) {
 
   const nbManche = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
+
+
   return (
     <>
       <div className="table">
         <div className="table-cell first-cell"></div>
         <div className="table-cell">
-          <h3>Team</h3>
+          <h3 className={`${totTeam1 > totTeam2 ? "win_txt" : "lose_txt"}`} >Team</h3>
           <div className="block-player">
-            <Players teamchoice={1} teams={props.team} click={handleClick} />
+            <Players teamchoice={1} teams={teams} click={handleClick} />
           </div>
         </div>
         <div className="table-cell">
-          <h3>Team</h3>
+          <h3 className={`${totTeam1 < totTeam2 ? "win_txt" : "lose_txt"}`} >Team</h3>
           <div className="block-player">
-            <Players teamchoice={2} teams={props.team} click={handleClick} />
+            <Players teamchoice={2} teams={teams} click={handleClick} />
           </div>
         </div>
 
@@ -106,10 +119,10 @@ function ScoreTab(props) {
           <div className="table-cell cell-feature tot">Total</div>
           <div className="tabScoreTeam">
             <div className="table-cell">
-              <p>{showTotal(props.dataGame, 1)}</p>
+              <p className={`${totTeam1 > totTeam2 ? "win_txt" : "lose_txt"}`} >{totTeam1}</p>
             </div>
             <div className="table-cell">
-              <p>{showTotal(props.dataGame, 2)}</p>
+              <p className={`${totTeam1 < totTeam2 ? "win_txt" : "lose_txt"}`} >{totTeam2}</p>
             </div>
           </div>
         </div>

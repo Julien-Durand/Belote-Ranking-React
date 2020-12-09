@@ -324,7 +324,7 @@ function Manches(props) {
             score2={teamScore.team2 + score.scoreTeam2}
             team={props.teams}
           />
-          <ScoreTab dataGame={game} team={props.teams} />
+          <ScoreTab dataGame={game} />
           <div className="leave">
           <Button
             buttonStyle="btn__simple"
