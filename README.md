@@ -2,7 +2,7 @@
 
 https://react-belote.web.app/
 
-New project to learn ReactJs. It's a webapp with local storage for the v1
+*New project to learn*
 Projet en React afin de pratiquer et apprendre.
 C'est une application qui permet de compter les points d'une partie de belote.
 Après avoir créé un compte commun pour son groupe d'amis, il est possible d'ajouter dans une liste de joueurs les différents amis.
@@ -24,7 +24,7 @@ Pour la deuxième version, il sera possible de voir les stats pour chaque joueur
     -- Manche/Scores --> Done
     --Afficher le score de la partie --> Done
 
-4 - Afficher les scores --> **To Do**
+4 - Afficher les scores --> Done
 
 #V2
 
