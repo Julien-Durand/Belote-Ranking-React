@@ -12,7 +12,7 @@ Il est possible de retrouver tous les scores de chaque partie terminée.
 Pour la deuxième version, il sera possible de voir les stats pour chaque joueurs.
 
 
-# Steps
+# Steps -- Finished
 
 1 - HomePage --> Done
 2 - Création de compte et connexion --> Done 
@@ -20,11 +20,11 @@ Pour la deuxième version, il sera possible de voir les stats pour chaque joueur
 2 - Page Liste des joueurs (ajouter un joueur - voir la liste) --> Done
 
 3 - Commencer une partie de belote: 
-    * Créer les équipes --> Done
-    * Manche/Scores --> Done
-    * Afficher le score de la partie --> Done
+- [x] Créer les équipes
+- [x] Manche/Scores
+- [x] Afficher le score de la partie
 
-4 - Afficher les scores --> Done
+4 - Afficher les scores
 
 #V2
 
