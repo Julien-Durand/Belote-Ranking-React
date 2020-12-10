@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.scss";
+import { useUser } from "reactfire";
 
 function Footer() {
+  const user = useUser();
   return (
     <footer className="footer">
       <div className="container">
@@ -20,17 +22,17 @@ function Footer() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-link">
-                  Joueurs
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/" className="nav-link">
+                <Link to={user ? "Belote" : "signin"} className="nav-link">
                   Commencer une partie
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/" className="nav-link">
+                <Link to={user ? "Joueurs" : "signin"} className="nav-link">
+                  Joueurs
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={user ? "Score" : "signin"} className="nav-link">
                   Scores
                 </Link>
               </li>

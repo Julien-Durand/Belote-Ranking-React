@@ -1,6 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../App.scss";
-import { Button } from "../Button/Button";
 import "./Card.scss";
 
 function Card(props) {
@@ -21,14 +21,11 @@ function Card(props) {
         </div>
       </div>
       <div className="card-footer text-center">
-        <Button
-          buttonStyle={props.btnStyle}
-          buttonColor={props.btnColor}
-          buttonSize={props.btnSize}
-          link={props.link}
-        >
-          {props.textBtn}
-        </Button>
+        
+        <Link to={props.link} className={`btn ${props.btnStyle} ${props.btnColor} ${props.btnSize}`}>
+        
+        {props.textBtn}
+        </Link>
       </div>
     </div>
   );

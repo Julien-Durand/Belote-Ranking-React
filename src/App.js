@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { FirebaseAppProvider, AuthCheck } from "reactfire";
 import firebaseConfig from "./firebase/firebaseIndex";
+import ScrollToTop from 'react-router-scroll-top';
 //Style
 import "./App.scss";
 
@@ -40,6 +41,7 @@ const App = () => {
   return (
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
       <Router>
+      <ScrollToTop/>
         <Switch>
           <Suspense
             fallback={
