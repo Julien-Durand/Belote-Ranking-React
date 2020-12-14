@@ -70,6 +70,7 @@
             padding: 10px 15px;
             display: block;
             width: 100%;
+            min-width: 180px;
             height: calc(2.25rem + 2px);
             line-height: 1.42857;
             color: hsla(0, 0%, 100%, 0.8);
@@ -134,9 +135,18 @@
       .form-manche {
         .bloc-team {
           margin-top: 25px;
+          justify-content: space-around;
           .wrappe-score {
-            margin-left: 20px;
+            width: auto;
+            margin-left: 0;
+            margin-right: 0;
+            button {
+              margin-top: 10px;
+            }
           }
+          // .wrappe-score {
+          //   margin-left: 20px;
+          // }
         }
         button {
           margin-top: 40px;

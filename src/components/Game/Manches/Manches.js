@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
+import { Link } from "react-router-dom";
 import { useFirebaseApp, useUser } from "reactfire";
-import { Button } from "../../Button/Button";
 import ScoreTab from "../../Scores/ScoreTab";
 import ScoreTeam from "../ScoreTeam/ScoreTeam";
 import Winner from "../Winner/Winner";
@@ -38,6 +38,8 @@ function Manches(props) {
     scoreTeam2: "",
     preneur: "",
     preneurTeam: "",
+    beloteT1: false,
+    beloteT2: false,
     error: "",
   });
 
@@ -47,7 +49,7 @@ function Manches(props) {
   });
   const [scoreBefore, setBefore] = useState({
     scoreBefore1: 0,
-    scoreBefore2: 0,
+    scoreBefore2: 0
   });
 
   //update win team
@@ -82,11 +84,13 @@ function Manches(props) {
             mancheId: props.manche,
             scoreTeam1: doc.data().score.scoreTeam1,
             scoreTeam2: doc.data().score.scoreTeam2,
-            preneur: doc.data().score.preneur,
+            beloteT1: doc.data().score.beloteT1,
+            beloteT2: doc.data().score.beloteT2,
+            preneur: doc.data().score.preneur
           });
           setBefore({
             scoreBefore1: doc.data().score.scoreTeam1,
-            scoreBefore2: doc.data().score.scoreTeam2,
+            scoreBefore2: doc.data().score.scoreTeam2
           });
           setMancheAlready(true);
         }
@@ -113,7 +117,7 @@ function Manches(props) {
 
   //onChange Input Score team 1
   const handleChangeScore1 = (e) => {
-    if (e.target.validity.valid) {
+    if (e.target.validity.valid && e.target.value !== "") {
       setScore({
         ...score,
         [e.target.name]: parseInt(e.target.value),
@@ -124,7 +128,7 @@ function Manches(props) {
   };
   //OnChange Input Score team 2
   const handleChangeScore2 = (e) => {
-    if (e.target.validity.valid) {
+    if (e.target.validity.valid && e.target.value !== "") {
       setScore({
         ...score,
         [e.target.name]: parseInt(e.target.value),
@@ -138,7 +142,7 @@ function Manches(props) {
     setScore({
       ...score,
       preneur: player,
-      preneurTeam: teamNumber
+      preneurTeam: teamNumber,
     });
   };
 
@@ -196,7 +200,7 @@ function Manches(props) {
         ...score,
         error: "Séléctionner un preneur !",
       });
-    } else if (isNaN(score.scoreTeam1) || isNaN(score.scoreTeam2)) {
+    } else if (score.scoreTeam1 === "" || score.scoreTeam2 === "") {
       setScore({
         ...score,
         error: "Il manque un score !",
@@ -242,6 +246,49 @@ function Manches(props) {
     props.onClick(props.manche);
   };
 
+  // belote add
+  const handleClickBeloteTeam1 = (e) => {
+    if (score.beloteT1 === false && score.beloteT2 === true) {
+      setScore({
+        ...score,
+        scoreTeam1: score.scoreTeam1 + 20,
+        scoreTeam2: score.scoreTeam2 - 20,
+        beloteT1: true,
+        beloteT2: false,
+      });
+    } else if (score.beloteT1 === false) {
+      setScore({ ...score, scoreTeam1: score.scoreTeam1 + 20, beloteT1: true });
+    } else if (score.beloteT1 === true) {
+      setScore({
+        ...score,
+        scoreTeam1: score.scoreTeam1 - 20,
+        beloteT1: false,
+      });
+    }
+  };
+  const handleClickBeloteTeam2 = (e) => {
+    if (score.beloteT2 === false && score.beloteT1 === true) {
+      setScore({
+        ...score,
+        scoreTeam1: score.scoreTeam1 - 20,
+        scoreTeam2: score.scoreTeam2 + 20,
+        beloteT1: false,
+        beloteT2: true,
+      });
+    } else if (score.beloteT2 === false) {
+      setScore({ ...score, scoreTeam2: score.scoreTeam2 + 20, beloteT2: true });
+    } else if (score.beloteT2 === true) {
+      setScore({
+        ...score,
+        scoreTeam2: score.scoreTeam2 - 20,
+        beloteT2: false,
+      });
+    }
+  };
+
+  const handleNext = () => {
+    window.location.reload();
+  };
   return (
     <>
       {!end && (
@@ -273,7 +320,7 @@ function Manches(props) {
             <div className="row wrappe-score">
               <ScoreTeam score={teamScore.team1} className="scoreT" />
               <input
-                type="number"
+                type="text"
                 max="282"
                 min="0"
                 pattern="[0-9]*"
@@ -283,6 +330,13 @@ function Manches(props) {
                 id="scoreTeam1"
                 value={score.scoreTeam1}
               />
+              <button
+                type="button"
+                className="btn btn__simple btn__regular btn__success"
+                onClick={handleClickBeloteTeam1}
+              >
+                {score.beloteT1 ? "Supprimer" : "Belote !"}
+              </button>
             </div>
           </div>
           <div className="col-md-12 bloc-team">
@@ -295,7 +349,7 @@ function Manches(props) {
             <div className="row wrappe-score">
               <ScoreTeam score={teamScore.team2} className="scoreT" />
               <input
-                type="number"
+                type="text"
                 max="282"
                 min="0"
                 pattern="[0-9]*"
@@ -305,6 +359,13 @@ function Manches(props) {
                 id="scoreTeam2"
                 value={score.scoreTeam2}
               />
+              <button
+                type="button"
+                className="btn btn__simple btn__regular btn__success"
+                onClick={handleClickBeloteTeam2}
+              >
+                {score.beloteT2 ? "Supprimer" : "Belote !"}
+              </button>
             </div>
           </div>
           {score.error && <span style={{ color: "red" }}>{score.error}</span>}
@@ -326,22 +387,12 @@ function Manches(props) {
           />
           <ScoreTab dataGame={game} />
           <div className="leave">
-          <Button
-            buttonStyle="btn__simple"
-            buttonColor="btn__success"
-            buttonSize="btn__regular"
-            link="Belote"
-          >
+          <Link to="Belote" className="btn btn__simple btn__success btn__regular" onClick={handleNext}>
             Nouvelle Partie
-          </Button>
-          <Button
-            buttonStyle="btn__round"
-            buttonColor="btn__danger"
-            buttonSize="btn__regular"
-            link="/"
-          >
+          </Link>
+          <Link to="/" className="btn btn__round btn__danger btn__regular">
             Quitter
-          </Button>
+          </Link>
           </div>
         </div>
       )}

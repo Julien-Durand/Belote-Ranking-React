@@ -21,10 +21,11 @@ function Card(props) {
         </div>
       </div>
       <div className="card-footer text-center">
-        
-        <Link to={props.link} className={`btn ${props.btnStyle} ${props.btnColor} ${props.btnSize}`}>
-        
-        {props.textBtn}
+        <Link
+          to={props.link}
+          className={`btn ${props.btnStyle} ${props.btnColor} ${props.btnSize}`}
+        >
+          {props.textBtn}
         </Link>
       </div>
     </div>

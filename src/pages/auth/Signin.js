@@ -3,6 +3,7 @@ import { useFirebaseApp } from "reactfire";
 import { useHistory } from "react-router";
 import "firebase/auth";
 import "./auth.scss";
+import { Link } from "react-router-dom";
 
 const Signin = () => {
   
@@ -76,12 +77,9 @@ const Signin = () => {
               
                 <div className="textSignup">
                   Pas de encore de compte ?
-                  <a
-                    href="/signup"
-                    className="btn btn__info btn__simple btn__small"
-                  >
+                  <Link tp="/signup" className="btn btn__info btn__simple btn__small" >
                     S'inscrire
-                  </a>
+                  </Link>
                 </div>
               </form>
               

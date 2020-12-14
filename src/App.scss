@@ -107,7 +107,8 @@
 .section-PlayerList {
   padding-top: 30px;
 }
-.section-game, .section-score {
+.section-game,
+.section-score {
   min-height: 100vh;
   // max-height: 999px;
 }
@@ -192,6 +193,14 @@
       color: #fd5d93;
     }
   }
+  // textarea,
+  // input.text,
+  // input[type="text"],
+  // input[type="button"],
+  // input[type="submit"],
+  // .input-checkbox {
+  //   -webkit-appearance: none;
+  // }
 }
 
 @media (min-width: 576px) {
