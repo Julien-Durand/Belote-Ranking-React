@@ -11,14 +11,12 @@ function ListPlayer() {
   //List state
   const [lists, setList] = useState([]);
 
-  useEffect(() => {
-    const subscriber = db
+  useEffect(() => { 
+    db
       .collection("Users")
       .doc(user.uid)
       .collection("Joueurs")
       .onSnapshot((querySnapshot) => {
-        setList([]);
-        if (lists) {
           querySnapshot.forEach((doc) => {
             setList((lists) => [
               ...lists,
@@ -31,10 +29,8 @@ function ListPlayer() {
               },
             ]);
           });
-        }
       });
-    return () => subscriber();
-  }, [db, user, lists]);
+  }, [db, user]);
 
   return (
     <>
