@@ -1,4 +1,4 @@
-# Belote-Ranking-ReactJs
+# BLR -- Belote-Ranking-ReactJs
 
 https://react-belote.web.app/
 
